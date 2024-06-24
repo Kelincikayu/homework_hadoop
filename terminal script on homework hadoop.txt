@@ -1,0 +1,58 @@
+PS D:\homework_hadoop> mkdir csv_files
+PS D:\homework_hadoop> python fetch_poke_ability.py
+docker cp D:\homework_hadoop\csv_files namenode:/csv_files
+PS D:\homework_hadoop> docker exec -it namenode /bin/bash
+root@91df8af94a04:/# hdfs dfs -mkdir /pokemon_abilities
+root@91df8af94a04:/# hdfs dfs -put /csv_files/*.csv /pokemon_abilities/
+root@91df8af94a04:/# hdfs dfs -ls /pokemon_abilities
+
+PS D:\homework_hadoop> mkdir csv_files
+
+
+    Directory: D:\homework_hadoop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         6/24/2024  11:46 PM                csv_files
+
+
+PS D:\homework_hadoop> python fetch_poke_ability.py
+Saved abilities 1 to 100 to CSV.
+Saved abilities 101 to 200 to CSV.
+Saved abilities 201 to 300 to CSV.
+Saved abilities 301 to 400 to CSV.
+Saved abilities 401 to 500 to CSV.
+Saved abilities 501 to 600 to CSV.
+Saved abilities 601 to 700 to CSV.
+Saved abilities 701 to 800 to CSV.
+Saved abilities 801 to 900 to CSV.
+Saved abilities 901 to 1000 to CSV.
+PS D:\homework_hadoop> docker cp D:\homework_hadoop\csv_files namenode:/csv_files
+Successfully copied 163kB to namenode:/csv_files
+PS D:\homework_hadoop> docker exec -it namenode /bin/bash
+root@91df8af94a04:/# hdfs dfs -mkdir /pokemon_abilities
+mkdir: `/pokemon_abilities': File exists
+root@91df8af94a04:/# hdfs dfs -put /csv_files/*.csv /pokemon_abilities/
+put: `/pokemon_abilities/abilities_101_to_200.csv': File exists
+put: `/pokemon_abilities/abilities_1_to_100.csv': File exists
+put: `/pokemon_abilities/abilities_201_to_300.csv': File exists
+put: `/pokemon_abilities/abilities_301_to_400.csv': File exists
+put: `/pokemon_abilities/abilities_401_to_500.csv': File exists
+put: `/pokemon_abilities/abilities_501_to_600.csv': File exists
+put: `/pokemon_abilities/abilities_601_to_700.csv': File exists
+put: `/pokemon_abilities/abilities_701_to_800.csv': File exists
+put: `/pokemon_abilities/abilities_801_to_900.csv': File exists
+put: `/pokemon_abilities/abilities_900_to_999.csv': File exists
+root@91df8af94a04:/# hdfs dfs -ls /pokemon_abilities
+Found 10 items
+-rw-r--r--   3 root supergroup      52786 2024-06-24 16:23 /pokemon_abilities/abilities_101_to_200.csv  
+-rw-r--r--   3 root supergroup      61845 2024-06-24 16:23 /pokemon_abilities/abilities_1_to_100.csv    
+-rw-r--r--   3 root supergroup      13188 2024-06-24 16:23 /pokemon_abilities/abilities_201_to_300.csv  
+-rw-r--r--   3 root supergroup        404 2024-06-24 16:23 /pokemon_abilities/abilities_301_to_400.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_401_to_500.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_501_to_600.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_601_to_700.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_701_to_800.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_801_to_900.csv  
+-rw-r--r--   3 root supergroup          2 2024-06-24 16:23 /pokemon_abilities/abilities_900_to_999.csv
